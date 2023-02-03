@@ -8,11 +8,11 @@ class CreateCustomerComponent extends Component {
 
         this.state = {
             id: this.props.match.params.id,
-            CustomerName: '',
-            PhoneNumber: '',
-            PhoneMake: '',
-            PhoneMonthlypay: '',
-            PhonePlanMonthlypay: ''
+            customerName: '',
+            phoneNumber: '',
+            phoneMake: '',
+            phoneMonthlypay: '',
+            phonePlanMonthlypay: ''
         }
         this.changeCustomerNameHandler = this.changeCustomerNameHandler.bind(this)
         this.changePhoneNumberHandler = this.changePhoneNumberHandler.bind(this)
@@ -30,12 +30,12 @@ class CreateCustomerComponent extends Component {
             CustomerService.getCustomerById(this.state.id).then( (res) => {
                 let customer = res.data;
                 this.setState({
-                    CustomerId: customer.CustomerId,
-                    CustomerName: customer.CustomerName,
-                    PhoneNumber: customer.PhoneNumber,
-                    PhoneMake: customer.PhoneMake,
-                    PhoneMonthlypay: customer.PhoneMonthlypay,
-                    PhonePlanMonthlypay: customer.PhonePlanMonthlypay
+                    customerId: customer.customerId,
+                    customerName: customer.customerName,
+                    phoneNumber: customer.phoneNumber,
+                    phoneMake: customer.phoneMake,
+                    phoneMonthlypay: customer.phoneMonthlypay,
+                    phonePlanMonthlypay: customer.phonePlanMonthlypay
                 });
             });
         }
@@ -43,7 +43,7 @@ class CreateCustomerComponent extends Component {
 
     saveOrUpdateCustomer = (e) => {
         e.preventDefault();
-        let customer = {CustomerId: this.state.CustomerId, CustomerName: this.state.CustomerName, PhoneNumber: this.state.PhoneNumber, PhoneMake: this.state.phoneMake, PhoneMonthlypay: this.state.PhoneMonthlypay, PhonePlanMonthlypay: this.state.PhonePlanMonthlypay};
+        let customer = {customerId: this.state.customerId, customerName: this.state.customerName, phoneNumber: this.state.phoneNumber, phoneMake: this.state.phoneMake, phoneMonthlypay: this.state.phoneMonthlypay, phonePlanMonthlypay: this.state.phonePlanMonthlypay};
         console.log('customer => '+ JSON.stringify(customer));
 
         if(this.state.id === '_add'){
@@ -57,28 +57,28 @@ class CreateCustomerComponent extends Component {
         }
     }
 
-    changeCustomerIdHandler= (event) => {
-        this.setState({CustomerId: event.target.value});
+    changeCustomerIdHandler = (event) => {
+        this.setState({customerId: event.target.value});
     }
 
-    changeCustomerNameHandler= (event) => {
-        this.setState({CustomerName: event.target.value});
+    changeCustomerNameHandler = (event) => {
+        this.setState({customerName: event.target.value});
     }
 
-    changePhoneNumberHandler= (event) => {
-        this.setState({PhoneNumber: event.target.value});
+    changePhoneNumberHandler = (event) => {
+        this.setState({phoneNumber: event.target.value});
     }
 
-    changePhoneMakeHandler= (event) => {
-        this.setState({PhoneMake: event.target.value});
+    changePhoneMakeHandler = (event) => {
+        this.setState({phoneMake: event.target.value});
     }
 
-    changePhoneMonthlypayHandler= (event) => {
-        this.setState({PhoneMonthlypay: event.target.value});
+    changePhoneMonthlypayHandler = (event) => {
+        this.setState({phoneMonthlypay: event.target.value});
     }
 
-    changePhonePlanMonthlypayHandler= (event) => {
-        this.setState({PhonePlanMonthlypay: event.target.value});
+    changePhonePlanMonthlypayHandler = (event) => {
+        this.setState({phonePlanMonthlypay: event.target.value});
     }
 
     cancel(){
@@ -108,27 +108,27 @@ class CreateCustomerComponent extends Component {
                                 <form>
                                 <div className="form-group">
                                         <label> Customer ID:</label>
-                                        <input placeholder="Customer ID" name="CustomerId" className="form-control" value={this.state.CustomerId} onChange={this.changeCustomerIdHandler}/>
+                                        <input placeholder="Customer ID" name="CustomerId" className="form-control" value={this.state.customerId} onChange={this.changeCustomerIdHandler}/>
                                     </div>
                                     <div className="form-group">
                                         <label> Customer Name:</label>
-                                        <input placeholder="Customer Name" name="CustomerName" className="form-control" value={this.state.CustomerName} onChange={this.changeCustomerNameHandler}/>
+                                        <input placeholder="Customer Name" name="CustomerName" className="form-control" value={this.state.customerName} onChange={this.changeCustomerNameHandler}/>
                                     </div>
                                     <div className="form-group">
                                         <label> Phone Number:</label>
-                                        <input placeholder="Phone Number" name="PhoneNumber" className="form-control" value={this.state.PhoneNumber} onChange={this.changePhoneNumberHandler}/>
+                                        <input placeholder="Phone Number" name="PhoneNumber" className="form-control" value={this.state.phoneNumber} onChange={this.changePhoneNumberHandler}/>
                                     </div>
                                     <div className="form-group">
                                         <label> Phone Make:</label>
-                                        <input placeholder="Phone Make" name="PhoneMake" className="form-control" value={this.state.PhoneMake} onChange={this.changePhoneMakeHandler}/>
+                                        <input placeholder="Phone Make" name="PhoneMake" className="form-control" value={this.state.phoneMake} onChange={this.changePhoneMakeHandler}/>
                                     </div>
                                     <div className="form-group">
                                         <label> Phone Monthly Pay:</label>
-                                        <input placeholder="Phone Monthly Pay" name="PhoneMonthlyPay" className="form-control" value={this.state.PhoneMonthlyPay} onChange={this.changePhoneMonthlypayHandler}/>
+                                        <input placeholder="Phone Monthly Pay" name="PhoneMonthlyPay" className="form-control" value={this.state.phoneMonthlypay} onChange={this.changePhoneMonthlypayHandler}/>
                                     </div>
                                     <div className="form-group">
                                         <label> Phone Plan Monthly Pay:</label>
-                                        <input placeholder="Phone Plan Monthly Pay" name="PhonePlanMonthlyPay" className="form-control" value={this.state.PhonePlanMonthlypay} onChange={this.changePhonePlanMonthlypayHandler}/>
+                                        <input placeholder="Phone Plan Monthly Pay" name="PhonePlanMonthlyPay" className="form-control" value={this.state.phonePlanMonthlypay} onChange={this.changePhonePlanMonthlypayHandler}/>
                                     </div>
 
                                     <button className="btn btn-success" onClick={this.saveOrUpdateCustomer}>Save</button>
